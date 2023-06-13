@@ -1,4 +1,4 @@
-ARG BASE_IMG_NAME=cragonnyunt/swoole
+ARG BASE_IMG_NAME=cragonnyunt/swoole-workspace
 
 ARG BASE_IMG_VER=8.2.6-worker
 
