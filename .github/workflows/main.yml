@@ -18,23 +18,23 @@ jobs:
           - name: Base
             context: ./Base
             dockerfile: Dockerfile
-            image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
+            image: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
           - name: Web
             context: ./Web
             dockerfile: Dockerfile
-            image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
+            image: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
           - name: Worker
             context: ./Worker
             dockerfile: Dockerfile
-            image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
+            image: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
           - name: CI
             context: ./CI
             dockerfile: Dockerfile
-            image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
+            image: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
           - name: Dev
             context: ./Dev
             dockerfile: Dockerfile
-            image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
+            image: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
 
     steps:
       - name: Checkout code
