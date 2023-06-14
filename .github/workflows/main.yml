@@ -30,6 +30,8 @@ jobs:
           - name: Dev
             context: ./Dev
             dockerfile: Dockerfile
+      fail-fast: true
+      max-parallel: 1
 
     steps:
       - name: Checkout code
