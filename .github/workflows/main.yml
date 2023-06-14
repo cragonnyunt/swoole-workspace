@@ -53,7 +53,7 @@ jobs:
 
       - name: Convert tag to lowercase
         id: convert_to_lowercase
-        run: echo "::set-output name=env_lowercase::${{ matrix.environment.name | awk '{print tolower($0)}' }}"
+        run: echo "::set-output name=env_lowercase::${{ matrix.environment.name }} | awk '{print tolower($0)}'"
 
       - name: Build and push multi-arch Docker image
         uses: docker/build-push-action@v2
