@@ -17,19 +17,14 @@ jobs:
         environment:
           - name: Base
             context: ./Base
-            dockerfile: Dockerfile
           - name: Web
             context: ./Web
-            dockerfile: Dockerfile
           - name: Worker
             context: ./Worker
-            dockerfile: Dockerfile
           - name: CI
             context: ./CI
-            dockerfile: Dockerfile
           - name: Dev
             context: ./Dev
-            dockerfile: Dockerfile
       fail-fast: true
       max-parallel: 1
 
@@ -61,11 +56,10 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ${{ matrix.environment.context }}
-          dockerfile: ${{ matrix.environment.dockerfile }}
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:${{ steps.extract_tag.outputs.tag }}-${{ steps.convert_to_lowercase.outputs.env_lowercase }}
-          environments: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
