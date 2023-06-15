@@ -46,10 +46,10 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
 
 ENV ENV=/home/${WORKSPACE_USER}/.profile
 
-COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER .profile /home/${WORKSPACE_USER}/.profile
+RUN echo "exec tmux new -s $WORKSPACE_USER" > /home/${WORKSPACE_USER}/.profile
 
-COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER .zshrc /home/${WORKSPACE_USER}/.zshrc
+COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER zsh/zshrc /home/${WORKSPACE_USER}/.zshrc
 
-COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER .tmux.conf /home/${WORKSPACE_USER}/.tmux.conf
+COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER tmux/tmux.conf /home/${WORKSPACE_USER}/.tmux.conf
 
-COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER init.vim /home/${WORKSPACE_USER}/.config/nvim/init.vim
+COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER nvim/init.vim /home/${WORKSPACE_USER}/.config/nvim/init.vim
