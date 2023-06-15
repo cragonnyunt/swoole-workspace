@@ -13,7 +13,7 @@ ARG WORKSPACE_USER=kore
 
 USER root
 
-COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER composer.json /home/${WORKSPACE_USER}/.composer/composer.json
+COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER composer/composer.json /home/${WORKSPACE_USER}/.composer/composer.json
 
 RUN mkdir -p /var/log/supervisor \
     && touch /var/log/supervisor/swoole-worker.log \
@@ -44,9 +44,9 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
     && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-ENV ENV=/home/${WORKSPACE_USER}/.profile
-
 RUN echo "exec tmux new -s $WORKSPACE_USER" > /home/${WORKSPACE_USER}/.profile
+
+ENV ENV=/home/${WORKSPACE_USER}/.profile
 
 COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER zsh/zshrc /home/${WORKSPACE_USER}/.zshrc
 
