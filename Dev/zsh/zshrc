@@ -1,7 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR=nvim
 
-plugins=(git common-aliases docker sudo zsh-autosuggestions)
+plugins=(git common-aliases zsh-autosuggestions)
 ZSH_THEME="lambda"
 
 source $ZSH/oh-my-zsh.sh
