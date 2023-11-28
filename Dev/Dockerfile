@@ -24,12 +24,15 @@ RUN mkdir -p /var/log/supervisor \
     && su -c 'composer global install' - ${WORKSPACE_USER} \
     && apk update && apk add --no-cache \
     curl \
+    fd \
+    gcc \
     git \
     htop \
     iputils \
     mysql-client \
     neovim \
     openssh-client \
+    ripgrep \
     the_silver_searcher \
     tmux \
     zsh \
