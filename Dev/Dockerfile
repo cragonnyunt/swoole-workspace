@@ -44,7 +44,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
     && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-RUN echo "exec tmux new -s $WORKSPACE_USER" > /home/${WORKSPACE_USER}/.profile
+RUN echo "exec tmux" > /home/${WORKSPACE_USER}/.profile
 
 ENV ENV=/home/${WORKSPACE_USER}/.profile
 
