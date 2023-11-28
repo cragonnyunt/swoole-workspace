@@ -1,13 +1,13 @@
-ARG PHP_DOCKER_TAG=8.2.6-cli-alpine3.18
+ARG PHP_DOCKER_TAG=8.3.0-cli-alpine3.18
 
 FROM php:${PHP_DOCKER_TAG}
 
-ARG DOCKER_PHP_EXT_INSTALLER_VER=2.1.28
-ARG PHP_EXT_GRPC_VER=1.55.0
-ARG PHP_EXT_SWOOLE_VER=5.0.3
-ARG PHP_EXT_PROTOBUF_VER=3.23.2
+ARG DOCKER_PHP_EXT_INSTALLER_VER=2.1.66
+ARG PHP_EXT_GRPC_VER=1.59.1
+ARG PHP_EXT_SWOOLE_VER=5.1.1
+ARG PHP_EXT_PROTOBUF_VER=3.25.1
 ARG PHP_EXT_RDKAFKA_VER=6.0.3
-ARG PHP_EXT_REDIS_VERSION=5.3.7
+ARG PHP_EXT_REDIS_VERSION=6.0.2
 
 ARG TZ=Asia/Yangon
 
@@ -33,8 +33,8 @@ RUN addgroup -g ${WORKSPACE_GID} ${WORKSPACE_GROUP} \
     && echo ${TZ} > /etc/timezone \
     && apk del tzdata \
     && docker-php-ext-configure gd --with-freetype  --with-jpeg \
-    && docker-php-ext-install bcmath gd pdo mysqli sockets pdo_mysql zip \
-    && docker-php-ext-enable bcmath gd pdo mysqli sockets pdo_mysql zip \
+    && docker-php-ext-install bcmath gd mysqli pdo pdo_mysql sockets zip \
+    && docker-php-ext-enable bcmath gd mysqli pdo pdo_mysql sockets zip \
     && curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/download/${DOCKER_PHP_EXT_INSTALLER_VER}/install-php-extensions -o - | IPE_LZF_BETTERCOMPRESSION=1 sh -s \
       grpc-${PHP_EXT_GRPC_VER} \
       protobuf-${PHP_EXT_PROTOBUF_VER} \
