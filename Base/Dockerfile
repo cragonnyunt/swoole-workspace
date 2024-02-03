@@ -1,4 +1,4 @@
-ARG PHP_DOCKER_TAG=8.3.0-cli-alpine3.18
+ARG PHP_DOCKER_TAG=8.3.2-cli-alpine3.19
 
 FROM php:${PHP_DOCKER_TAG}
 
