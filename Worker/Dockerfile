@@ -11,7 +11,8 @@ ARG WORKSPACE_USER=kore
 USER root
 
 RUN apk update && apk add --no-cache \
-    supervisor
+    supervisor \
+    tini
 
 COPY supervisor/supervisord.conf /etc/supervisord.conf
 
