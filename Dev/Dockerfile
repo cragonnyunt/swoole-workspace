@@ -24,6 +24,7 @@ RUN mkdir -p /var/log/supervisor \
     && su -c 'composer global install' - ${WORKSPACE_USER} \
     && apk update && apk add --no-cache \
     curl \
+    entr \
     fd \
     gcc \
     git \
