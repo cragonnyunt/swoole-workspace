@@ -1,17 +1,17 @@
 ARG BASE_IMG_NAME=cragonnyunt/swoole-workspace
 
-ARG BASE_IMG_VER=8.3.7-worker
+ARG BASE_IMG_VER=8.3.11-worker
 
 FROM $BASE_IMG_NAME:$BASE_IMG_VER
 
-LABEL maintainer="devkore@frontiir.net"
-
-ARG DOCKER_PHP_EXT_INSTALLER_VER=2.2.14
-ARG COMPOSER_VER=2.7.6
+ARG DOCKER_PHP_EXT_INSTALLER_VER=2.5.0
+ARG COMPOSER_VER=2.7.9
 
 ARG WORKSPACE_USER=kore
 
 USER root
+
+COPY supervisor/supervisord.conf /etc/supervisord.conf
 
 COPY --chown=$WORKSPACE_USER:$WORKSPACE_USER composer/composer.json /home/${WORKSPACE_USER}/.composer/composer.json
 
@@ -39,6 +39,8 @@ RUN mkdir -p /var/log/supervisor \
     && mkdir -p /home/${WORKSPACE_USER}/.vscode-server \
     && chown -R ${WORKSPACE_USER}:${WORKSPACE_USER} /home/${WORKSPACE_USER}/.vscode-server \
     && sed -i -e 's/bin\/ash/bin\/zsh/' /etc/passwd
+
+ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
 
 USER ${WORKSPACE_USER}
 

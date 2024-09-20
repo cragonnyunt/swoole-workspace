@@ -1,10 +1,8 @@
 ARG BASE_IMG_NAME=cragonnyunt/swoole-workspace
 
-ARG BASE_IMG_VER=8.3.7-base
+ARG BASE_IMG_VER=8.3.11-base
 
 FROM $BASE_IMG_NAME:$BASE_IMG_VER
-
-LABEL maintainer="devkore@frontiir.net"
 
 ARG WORKSPACE_USER=kore
 
@@ -15,6 +13,6 @@ RUN apk update && apk add --no-cache \
 
 ENTRYPOINT ["/sbin/tini", "--"]
 
-CMD ["php", "/var/www/artisan", "kore:serve"]
-
 USER ${WORKSPACE_USER}
+
+CMD ["php", "/var/www/artisan", "kore:serve"]
