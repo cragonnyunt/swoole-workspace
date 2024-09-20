@@ -4,13 +4,13 @@ ARG BASE_IMG_VER=8.3.11-base
 
 FROM $BASE_IMG_NAME:$BASE_IMG_VER
 
-LABEL maintainer="devkore@frontiir.net"
-
 ARG WORKSPACE_USER=kore
 
 USER root
 
 RUN apk update && apk add --no-cache \
     tini
+
+ENTRYPOINT ["/sbin/tini", "--"]
 
 USER ${WORKSPACE_USER}
