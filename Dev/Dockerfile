@@ -34,6 +34,7 @@ RUN mkdir -p /var/log/supervisor \
     neovim \
     openssh-client \
     ripgrep \
+    supervisor \
     the_silver_searcher \
     tmux \
     zsh \
