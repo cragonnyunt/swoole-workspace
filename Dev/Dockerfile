@@ -51,7 +51,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
     && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-echo 'SESH="kore"; tmux has-session -t $SESH 2 > /dev/null; if [ $? != 0 ]; then tmux new-session -d -s $SESH; fi; exec tmux attach-session -t $SESH' > /home/${WORKSPACE_USER}/.profile
+RUN echo 'if [ -n "$TMUX" ]; then exit 0; fi; SESH="kore"; tmux has-session -t $SESH 2>/dev/null; if [ $? != 0 ]; then tmux new-session -d -s $SESH; fi; exec tmux attach-session -t $SESH' > /home/${WORKSPACE_USER}/.profile
 
 ENV ENV=/home/${WORKSPACE_USER}/.profile
 
