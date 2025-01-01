@@ -42,7 +42,7 @@ RUN mkdir -p /var/log/supervisor \
     zsh \
     && mkdir -p /home/${WORKSPACE_USER}/.vscode-server \
     && chown -R ${WORKSPACE_USER}:${WORKSPACE_USER} /home/${WORKSPACE_USER}/.vscode-server \
-    && sed -i -e 's/bin\/ash/bin\/zsh/' /etc/passwd && \
+    && sed -i -e 's/bin\/ash/bin\/zsh/' /etc/passwd \
     && echo "pcov.enabled=0" >> /usr/local/etc/php/conf.d/docker-php-ext-pcov.ini
 
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
