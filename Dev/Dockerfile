@@ -1,11 +1,11 @@
 ARG BASE_IMG_NAME=cragonnyunt/swoole-workspace
 
-ARG BASE_IMG_VER=8.4.2-worker
+ARG BASE_IMG_VER=8.4.4-worker
 
 FROM $BASE_IMG_NAME:$BASE_IMG_VER
 
-ARG DOCKER_PHP_EXT_INSTALLER_VER=2.7.8
-ARG COMPOSER_VER=2.8.4
+ARG DOCKER_PHP_EXT_INSTALLER_VER=2.7.27
+ARG COMPOSER_VER=2.8.6
 ARG PHP_EXT_PCOV_VER=1.0.12
 
 ARG WORKSPACE_USER=kore
@@ -54,7 +54,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
     && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-RUN echo 'if [ -n "$TMUX" ]; then exit 0; fi; SESH="kore"; tmux has-session -t $SESH 2>/dev/null; if [ $? != 0 ]; then tmux new-session -d -s $SESH; fi; exec tmux attach-session -t $SESH' > /home/${WORKSPACE_USER}/.profile
+RUN echo 'if [ -n "$TMUX" ]; then exit 0; fi; SESH="kore"; tmux has-session -t $SESH 2>/dev/null; if [ $? != 0 ]; then tmux new-session -s $SESH; else exec tmux attach-session -t $SESH; fi;' > /home/${WORKSPACE_USER}/.profile
 
 ENV ENV=/home/${WORKSPACE_USER}/.profile
 
