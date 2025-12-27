@@ -1,6 +1,6 @@
 ARG BASE_IMG_NAME=cragonnyunt/swoole-workspace
 
-ARG BASE_IMG_VER=8.4.4-base
+ARG BASE_IMG_VER=8.5.1-base
 
 FROM $BASE_IMG_NAME:$BASE_IMG_VER
 
